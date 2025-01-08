@@ -1,0 +1,16 @@
+services:
+  dnas:
+    restart: unless-stopped
+    build:
+      context: ./dnas
+      dockerfile: dnas.Dockerfile
+    env_file:
+      - .env
+      - dnas/.env
+    networks:
+      - undead-games-network
+
+networks:
+  undead-games-network:
+    driver: bridge
+    name: undead-games-network

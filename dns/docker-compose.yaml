@@ -1,0 +1,17 @@
+services:
+  dns:
+    restart: unless-stopped
+    build: 
+      context: dns
+      dockerfile: dns.Dockerfile
+    env_file:
+      - .env
+    ports:
+      - "53:53/udp"
+    cap_add:
+    - NET_ADMIN
+
+networks:
+  undead-games-network:
+    driver: bridge
+    name: undead-games-network

@@ -1,0 +1,16 @@
+services:
+  gateway:
+    restart: unless-stopped
+    build:
+      context: apache
+      dockerfile: gateway.Dockerfile
+    ports:
+      - "80:80"
+      - "443:443"
+    networks: 
+      - undead-games-network
+
+networks:
+  undead-games-network:
+    driver: bridge
+    name: undead-games-network
