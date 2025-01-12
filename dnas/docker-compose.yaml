@@ -1,11 +1,10 @@
 services:
-  dnas:
+  ug-dnas:
     restart: unless-stopped
     build:
       context: ./dnas
       dockerfile: dnas.Dockerfile
     env_file:
-      - .env
       - dnas/.env
     networks:
       - undead-games-network

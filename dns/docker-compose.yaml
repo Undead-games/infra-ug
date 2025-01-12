@@ -1,11 +1,11 @@
 services:
-  dns:
+  ug-dns:
     restart: unless-stopped
     build: 
       context: dns
       dockerfile: dns.Dockerfile
-    env_file:
-      - .env
+      args:
+      - ROUTER_IP=${ROUTER_IP}
     ports:
       - "53:53/udp"
     cap_add:

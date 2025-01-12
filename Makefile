@@ -13,7 +13,6 @@ include .env
 
 init:
 	cp dnas/.env.example dnas/.env
-	cp dns/.env.example dns/.env
 
 export:
 	cd dnas && ${MAKE_BIN} export
@@ -24,7 +23,7 @@ build:
 	${DOCKER_BIN} compose ${COMPOSE_FILES_PARAM} build 
 
 run: disable-systemd-resolved
-	${DOCKER_BIN} compose ${COMPOSE_FILES_PARAM} up
+	${DOCKER_BIN} compose ${COMPOSE_FILES_PARAM} up --remove-orphans
 
 run-daemon: disable-systemd-resolved
 	${DOCKER_BIN} compose ${COMPOSE_FILES_PARAM} up -d

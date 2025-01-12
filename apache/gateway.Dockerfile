@@ -60,8 +60,11 @@ COPY --chown=0:0 ./etc /etc/gateway
 
 WORKDIR /var/www
 
-COPY ./sites-available /opt/gateway/sites-available
+COPY ./sites-enabled /opt/gateway/sites-enabled
 COPY ./conf.d /opt/gateway/conf.d
+COPY ./etc /etc
+COPY httpd.conf /opt/gateway/conf/httpd.conf
+COPY ./www /var/www
 COPY --chmod=754 ./start.sh /var/www/
 
 CMD [ "sh", "-c", "/var/www/start.sh" ]

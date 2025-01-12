@@ -46,10 +46,10 @@ class ConnectAction extends Action
 
     private function connector()
     {
-        $action = $this->resolveArg("action");
+        $action = str_ends_with($this->resolveArg("action"), "others") ? "others" : "connect";
         $folder = $this->resolveArg("folder");
 
-        $path = APP_ROOT . "/storage/dnas/{$folder}";
+        $path = APP_ROOT . "/storage/{$folder}";
 
         return match ($action) {
             "connect" => new RegularConnector($this->logger, $path),

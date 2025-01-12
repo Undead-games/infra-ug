@@ -1,5 +1,5 @@
 services:
-  gateway:
+  ug-gateway:
     restart: unless-stopped
     build:
       context: apache
